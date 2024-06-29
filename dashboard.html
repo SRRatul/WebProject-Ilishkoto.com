@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const user = JSON.parse(document.getElementById('user-data').textContent);
+            const now = new Date();
+            let greeting = "Good ";
+
+            const hour = now.getHours();
+            if (hour < 12) {
+                greeting += "Morning";
+            } else if (hour < 18) {
+                greeting += "Afternoon";
+            } else if (hour < 21) {
+                greeting += "Evening";
+            } else {
+                greeting += "Night";
+            }
+
+            document.getElementById('greeting').innerText = `${greeting}, ${user.username}!`;
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Fish Auction</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="user-account">
+            <a href="logout.php">Logout</a>
+        </div>
+    </header>
+    <main>
+        <section class="dashboard">
+            <h2 id="greeting">Welcome!</h2>
+            <div id="fisherman-options" class="dashboard-options" style="display: none;">
+                <h3>Fisherman Options</h3>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="create-auction.html">Create Auction</a></li>
+                    <li><a href="your-auctions.html">Your Auctions</a></li>
+                    <li><a href="account-balance.html">Account Balance</a></li>
+                </ul>
+            </div>
+            <div id="user-options" class="dashboard-options" style="display: none;">
+                <h3>User Options</h3>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="bid-auction.html">Bid an Auction</a></li>
+                    <li><a href="purchase-history.html">Purchase History</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div id="admin-options" class="dashboard-options" style="display: none;">
+                <h3>Admin Options</h3>
+                <ul>
+                    <li><a href="user-list.html">User List</a></li>
+                    <li><a href="fisherman-list.html">Fisherman List</a></li>
+                    <li><a href="payment-list.html">Payment List</a></li>
+                    <li><a href="add-news.html">Add News</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fish Auction. All rights reserved.</p>
+    </footer>
+
+    <div id="user-data" style="display: none;"></div>
+</body>
+</html>
